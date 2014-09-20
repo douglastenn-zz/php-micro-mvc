@@ -1,0 +1,23 @@
+{
+	"name": "douglastenn/php-mvc-skeleton",
+	"description": "PHP Skeleton - MVC Pattern",
+	"require": {
+		"php": ">=5.3.0"
+	},
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Douglas Tenório",
+			"email": "douglas.develop@gmail.com"
+		}
+	],
+	"autoload": {
+       "classmap": [
+			"app/config",
+			"app/controller",
+			"app/model",
+			"app/view",
+			"app/helper"
+		]
+    }
+}
