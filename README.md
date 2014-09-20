@@ -1,4 +1,4 @@
 php-mvc-skeleton
 ================
 
-PHP Skeleton - MVC Patter
+PHP Skeleton - MVC Pattern
