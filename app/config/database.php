@@ -1,5 +1,5 @@
 <?php
-class Database
+class Database extends Config
 {
 
 	public static $select = NULL;
@@ -193,7 +193,7 @@ class Database
 		}
 
 		try {
-			global $database;
+			$database = $this->getDatabase();
 			self::$query = $query;
 			$db = new PDO($database['type'] . ':host=' . $database['hostname'] . ';dbname=' . $database['database_name'],
 				$database['username'], $database['password']);
@@ -293,7 +293,7 @@ class Database
 		return self::get_instance();
 	}
 
-	public function like($field, $match, $wildcard = 'both')
+	public function like ($field, $match, $wildcard = 'both')
 	{
 		return self::_like($field, $match, $wildcard, '', 'AND');
 	}
@@ -409,15 +409,14 @@ class Database
 
 	public function execute($query = false) {
 		try {
-			global $database;
+			$database = $this->getDatabase();
 			self::$query = $query;
 			$db = new PDO($database['type'] . ':host=' . $database['hostname'] . ';dbname=' . $database['database_name'],
 				$database['username'], $database['password']);
 			self::$result = $db->prepare(self::$query);
 			self::$result->execute();
 			return true;
-		}
-		catch (PDOException $e) {
+		} catch (PDOException $e) {
 			exit('#Error - Conexão com banco de dados não estabelecida.');
 		}
 	}
