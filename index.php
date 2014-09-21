@@ -7,11 +7,10 @@ date_default_timezone_set('America/Sao_Paulo');
 define('APP', dirname(__FILE__) . '/app/');
 define('CONFIG', APP.'config/');
 define('ROOT', dirname(__FILE__));
-define('PUBLIC', dirname(__FILE__) . '/public/');
+define('PUBLIC_PATH', dirname(__FILE__) . '/public/');
+define('VENDOR', dirname(__FILE__) . '/vendor/');
 
-$db = new Database();
+require_once(VENDOR.'autoload.php');
 
-$teste = $db->select('*')->from('post')->get()->into('array');
-// $insert = $db->insert('post',array('name' => 'TESTE INSERT', 'post' => 'teste insert'));
-var_dump($teste);
-exit;
+session_start();
+Router::route(new Request);
